@@ -1,15 +1,32 @@
 webpackHotUpdate("main",{
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/styles/cica.scss":
-/*!*************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/styles/cica.scss ***!
-  \*************************************************************************************************************/
+/***/ "./src/index.ts":
+/*!**********************!*\
+  !*** ./src/index.ts ***!
+  \**********************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
-// Module
-exports.push([module.i, "body {\n  background-color: #c5c5c5; }\n\n.sand {\n  border: 1px solid red;\n  width: 2em;\n  height: 2em; }\n", ""]);
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var canvas = document.querySelector(".main-canvas");
+var ctx = canvas.getContext("2d");
+console.log("kiscica");
+var sizes_1 = __webpack_require__(/*! ./sizes */ "./src/sizes.ts");
+__webpack_require__(/*! ./styles/cica.scss */ "./src/styles/cica.scss");
+console.log("tile:", sizes_1.tile);
+var Board = /** @class */ (function () {
+    function Board() {
+        this.tile = sizes_1.tile;
+        this.Map = sizes_1.mapSize;
+    }
+    Board.prototype.drawMap = function () {
+        ctx.drawImage(document.getElementById("sand"), 20 * this.tile, 20 * this.tile);
+    };
+    return Board;
+}());
+exports.Board = Board;
 
 
 /***/ })

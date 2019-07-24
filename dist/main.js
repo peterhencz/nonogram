@@ -13,7 +13,7 @@
 /******/ 	function hotDownloadUpdateChunk(chunkId) {
 /******/ 		var script = document.createElement("script");
 /******/ 		script.charset = "utf-8";
-/******/ 		script.src = __webpack_require__.p + "2a4acae-" + chunkId + "-wps-hmr.js";
+/******/ 		script.src = __webpack_require__.p + "d11ec79-" + chunkId + "-wps-hmr.js";
 /******/ 		if (null) script.crossOrigin = null;
 /******/ 		document.head.appendChild(script);
 /******/ 	}
@@ -27,7 +27,7 @@
 /******/ 			}
 /******/ 			try {
 /******/ 				var request = new XMLHttpRequest();
-/******/ 				var requestPath = __webpack_require__.p + "2a4acae-wps-hmr.json";
+/******/ 				var requestPath = __webpack_require__.p + "d11ec79-wps-hmr.json";
 /******/ 				request.open("GET", requestPath, true);
 /******/ 				request.timeout = requestTimeout;
 /******/ 				request.send(null);
@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "1c93ec2080dbffff93a3";
+/******/ 	var hotCurrentHash = "8886e2b37883db3c45d5";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -805,7 +805,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "body {\n  background-color: #c5c5c5; }\n\n.sand {\n  border: 1px solid red;\n  width: 2em;\n  height: 2em; }\n", ""]);
+exports.push([module.i, "body {\n  background-color: #c5c5c5; }\n\n#sand {\n  border: 1px solid red;\n  width: 100vw;\n  height: 40em; }\n\n.ccc {\n  border: 4px solid tomato;\n  width: 2em;\n  height: 2em; }\n", ""]);
 
 
 /***/ }),
@@ -1448,7 +1448,7 @@ module.exports = function (css) {
   let hash = '<unknown>';
   let options;
   try {
-    options = {"compress":null,"headers":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":false,"port":55555,"progress":true,"secure":false,"static":["/Users/peterhencz/Desktop/code/projects/nonogram"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"2a4acae"};
+    options = {"compress":null,"headers":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":false,"port":55555,"progress":true,"secure":false,"static":["/Users/peterhencz/Desktop/code/projects/nonogram"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"d11ec79"};
   } catch (e) {
     const { log } = __webpack_require__(/*! ./lib/client/log */ "./node_modules/webpack-plugin-serve/lib/client/log.js");
     log.error(
@@ -2543,19 +2543,72 @@ var canvas = document.querySelector(".main-canvas");
 var ctx = canvas.getContext("2d");
 console.log("kiscica");
 var sizes_1 = __webpack_require__(/*! ./sizes */ "./src/sizes.ts");
+var maps_1 = __webpack_require__(/*! ./maps */ "./src/maps.ts");
 __webpack_require__(/*! ./styles/cica.scss */ "./src/styles/cica.scss");
 console.log("tile:", sizes_1.tile);
 var Board = /** @class */ (function () {
     function Board() {
         this.tile = sizes_1.tile;
         this.Map = sizes_1.mapSize;
+        this.gameMap = maps_1.level1;
     }
     Board.prototype.drawMap = function () {
-        ctx.drawImage(document.getElementsByClassName("sand"), 20 * this.tile, 20 * this.tile);
+        for (var x = 0; x < this.Map; x++) {
+            for (var y = 0; y < this.Map; y++) {
+                switch (this.gameMap[x][y]) {
+                    case 0:
+                        var tile = document.createElement("div");
+                        tile.classList.add("ccc");
+                        var element = document.getElementById("sand");
+                        element.appendChild(tile);
+                        break;
+                    default:
+                        ctx.drawImage(document.getElementById("palm"), y * this.tile, x * this.tile);
+                }
+            }
+        }
     };
     return Board;
 }());
 exports.Board = Board;
+exports.newBoard = new Board();
+exports.newBoard.drawMap();
+
+
+/***/ }),
+
+/***/ "./src/maps.ts":
+/*!*********************!*\
+  !*** ./src/maps.ts ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.level1 = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 4, 5, 0, 0, 0, 0, 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 9, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 15, 15, 10, 11, 0, 2, 3, 0, 0, 0],
+    [0, 0, 0, 0, 1, 0, 8, 9, 0, 15, 15, 15, 12, 13, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 2, 3, 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 2, 3, 2, 3, 2, 3, 0, 0, 0, 0, 0, 1, 0, 0, 6, 0, 0],
+    [0, 0, 0, 0, 2, 3, 15, 0, 0, 0, 4, 5, 0, 0, 0, 9, 0, 7, 6, 0],
+    [0, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 5, 2, 3, 8, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 8, 1, 0, 0, 2, 3, 9, 7, 6, 0, 0, 0, 0, 0],
+    [0, 4, 5, 2, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0],
+    [0, 0, 1, 4, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 6, 4, 5, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 4, 5, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 2, 3, 0, 0, 0],
+    [0, 0, 0, 0, 7, 8, 0, 9, 0, 0, 0, 0, 0, 0, 2, 3, 2, 3, 0, 0],
+    [0, 0, 0, 9, 0, 6, 0, 4, 5, 0, 0, 0, 0, 14, 0, 4, 5, 2, 3, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+];
 
 
 /***/ }),
