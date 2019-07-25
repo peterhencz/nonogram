@@ -7,7 +7,7 @@
 💡 [wiki](https://en.wikipedia.org/wiki/Nonogram)
 
 💭 todo
-[] column && row counter 🧨
+[] column && row counter 🧨<br>
 [] level select 🧨
 [] dynamic level size
 [] difficult && life counter
