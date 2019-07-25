@@ -52,7 +52,7 @@ export class Board {
             break;
 
           case 1:
-            this.drawTile("full_tile", x, y, "");
+            this.drawTile("blank_tile", x, y, "");
             break;
           case 2:
             this.drawTile("info", x, y, "⚓");

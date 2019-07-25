@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "a84b3b5b5682761f70f0";
+/******/ 	var hotCurrentHash = "867fb648ce4ee53f327a";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -2586,7 +2586,7 @@ var Board = /** @class */ (function () {
                         this.drawTile("blank_tile", x, y, "");
                         break;
                     case 1:
-                        this.drawTile("full_tile", x, y, "");
+                        this.drawTile("blank_tile", x, y, "");
                         break;
                     case 2:
                         this.drawTile("info", x, y, "⚓");
