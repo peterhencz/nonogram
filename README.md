@@ -1,7 +1,7 @@
-# nonogram
+# nonogram-generator
 
 🤘 nonogram generator
 
 ⚓ ts, sass, webpack
 
-[wiki](https://en.wikipedia.org/wiki/Nonogram)
+💡 [wiki](https://en.wikipedia.org/wiki/Nonogram)
