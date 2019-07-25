@@ -6,6 +6,7 @@ body {
   place-items: center;
   height: 100vh;
   width: auto;
+  font-size: 16px;
 }
 
 #board {
@@ -29,6 +30,9 @@ body {
 }
 
 .info {
+  display: grid;
+  place-items: center center;
+  font-size: 0.5em;
   border: 1px solid transparent;
   width: 20px;
   height: 20px;
@@ -36,6 +40,9 @@ body {
 }
 
 .emo {
+  display: grid;
+  place-items: center center;
+  font-size: 0.5em;
   border: 1px solid transparent;
   width: 20px;
   height: 20px;

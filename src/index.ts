@@ -1,8 +1,5 @@
 "use strict";
 
-const canvas = document.querySelector(".main-canvas") as HTMLCanvasElement;
-const ctx = canvas.getContext("2d");
-
 console.log("kiscica");
 
 import { tile, mapSize } from "./sizes";
@@ -26,7 +23,7 @@ export class Board {
     }
     if (y % 5 == 0) {
       tile.style.borderRight = "2px solid #333";
-    } 
+    }
     if (y % 10 == 0) {
       tile.style.borderRight = "3px solid #333";
     }
