@@ -1,5 +1,7 @@
 body {
   background-color: #c5c5c5;
+  display: grid;
+  place-items: center;
 }
 
 #board {
@@ -9,14 +11,28 @@ body {
 }
 
 .blank_tile {
-  border: 1px solid tomato;
+  border: 1px solid #333;
   width: 20px;
   height: 20px;
 }
 
 .full_tile {
-  border: 1px solid tomato;
+  border: 1px solid #333;
   width: 20px;
   height: 20px;
-  background-color: tomato;
+  background-color: #333;
+}
+
+.info {
+  border: 1px solid transparent;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+}
+
+.emo {
+  border: 1px solid transparent;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
 }

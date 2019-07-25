@@ -15,16 +15,22 @@ export class Board {
   Map = mapSize;
   gameMap = level1;
 
-  drawTile(tileClass: string, x: number, y: number) {
+  drawTile(tileClass: string, x: number, y: number, inner?: string) {
     let tile = document.createElement("div");
     tile.classList.add(tileClass);
-    tile.innerHTML = x.toString();
+    tile.innerHTML = inner;
     console.log(x);
-    if ((x + 1) % 5 == 0) {
-      tile.style.borderBottom = "4px solid blue";
+    if (x % 5 == 0) {
+      tile.style.borderBottom = "2px solid #333";
     }
-    if ((y + 1) % 5 == 0) {
-      tile.style.borderRight = "4px solid blue";
+    if (x % 10 == 0) {
+      tile.style.borderBottom = "3px solid #333";
+    }
+    if (y % 5 == 0) {
+      tile.style.borderRight = "2px solid #333";
+    }
+    if (y % 10 == 0) {
+      tile.style.borderRight = "3px solid #333";
     }
     let board = document.getElementById("board");
     board.appendChild(tile);
@@ -42,15 +48,20 @@ export class Board {
       for (let y = 0; y < this.Map; y++) {
         switch (this.gameMap[x][y]) {
           case 0:
-            this.drawTile("blank_tile", x, y);
+            this.drawTile("blank_tile", x, y, "");
             break;
 
           case 1:
-            this.drawTile("full_tile", x, y);
+            this.drawTile("full_tile", x, y, "");
             break;
-
+          case 2:
+            this.drawTile("info", x, y, "⚓");
+            break;
+          case 3:
+            this.drawTile("emo", x, y, "🤘");
+            break;
           default:
-            this.drawTile("blank_tile", x, y);
+            this.drawTile("blank_tile", x, y, "");
         }
       }
     }
