@@ -15,23 +15,42 @@ export class Board {
   Map = mapSize;
   gameMap = level1;
 
+  drawTile(tileClass: string, x: number, y: number) {
+    let tile = document.createElement("div");
+    tile.classList.add(tileClass);
+    tile.innerHTML = x.toString();
+    console.log(x);
+    if ((x + 1) % 5 == 0) {
+      tile.style.borderBottom = "4px solid blue";
+    }
+    if ((y + 1) % 5 == 0) {
+      tile.style.borderRight = "4px solid blue";
+    }
+    let board = document.getElementById("board");
+    board.appendChild(tile);
+  }
+
+  drawBoardSize() {
+    let board = document.getElementById("board");
+    board.style.width = mapSize * tile + "px";
+  }
+
   drawMap() {
+    console.log("clg: ", this.tile, this.Map, this.gameMap);
+    this.drawBoardSize();
     for (let x = 0; x < this.Map; x++) {
       for (let y = 0; y < this.Map; y++) {
         switch (this.gameMap[x][y]) {
           case 0:
-            var tile = document.createElement("div");
-            tile.classList.add("ccc");
-            var element = document.getElementById("sand");
-            element.appendChild(tile);
+            this.drawTile("blank_tile", x, y);
+            break;
+
+          case 1:
+            this.drawTile("full_tile", x, y);
             break;
 
           default:
-            ctx.drawImage(
-              document.getElementById("palm") as HTMLImageElement,
-              y * this.tile,
-              x * this.tile
-            );
+            this.drawTile("blank_tile", x, y);
         }
       }
     }

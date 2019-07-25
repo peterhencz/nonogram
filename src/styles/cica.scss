@@ -2,14 +2,21 @@ body {
   background-color: #c5c5c5;
 }
 
-#sand {
-  border: 1px solid red;
-  width: 100vw;
-  height: 40em;
+#board {
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
 }
 
-.ccc {
-  border: 4px solid tomato;
-  width: 2em;
-  height: 2em;
+.blank_tile {
+  border: 1px solid tomato;
+  width: 20px;
+  height: 20px;
+}
+
+.full_tile {
+  border: 1px solid tomato;
+  width: 20px;
+  height: 20px;
+  background-color: tomato;
 }
