@@ -1,13 +1,18 @@
 body {
+  margin: 0;
+  padding: 1em;
   background-color: #c5c5c5;
   display: grid;
   place-items: center;
+  height: 100vh;
+  width: auto;
 }
 
 #board {
   display: flex;
   flex-direction: row;
   flex-flow: wrap;
+  height: auto;
 }
 
 .blank_tile {

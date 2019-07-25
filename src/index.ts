@@ -9,7 +9,6 @@ import { tile, mapSize } from "./sizes";
 import { level1 } from "./maps";
 import "./styles/cica.scss";
 
-console.log("tile:", tile);
 export class Board {
   tile = tile;
   Map = mapSize;
@@ -19,7 +18,6 @@ export class Board {
     let tile = document.createElement("div");
     tile.classList.add(tileClass);
     tile.innerHTML = inner;
-    console.log(x);
     if (x % 5 == 0) {
       tile.style.borderBottom = "2px solid #333";
     }
@@ -28,7 +26,7 @@ export class Board {
     }
     if (y % 5 == 0) {
       tile.style.borderRight = "2px solid #333";
-    }
+    } 
     if (y % 10 == 0) {
       tile.style.borderRight = "3px solid #333";
     }
@@ -41,6 +39,22 @@ export class Board {
     board.style.width = mapSize * tile + "px";
   }
 
+  countColumn() {
+    let count1 = 0;
+    let count0 = 0;
+    for (let i = 1; i < mapSize; i++) {
+      let fullTile = this.gameMap[i];
+      for (let j = 0; j < fullTile.length; j++) {
+        if (fullTile[j] == 1) {
+          count1++;
+        } else {
+          count0++;
+        }
+      }
+      console.log("count1: ", count1, "count0: ", count0);
+    }
+  }
+
   drawMap() {
     console.log("clg: ", this.tile, this.Map, this.gameMap);
     this.drawBoardSize();
@@ -50,9 +64,8 @@ export class Board {
           case 0:
             this.drawTile("blank_tile", x, y, "");
             break;
-
           case 1:
-            this.drawTile("blank_tile", x, y, "");
+            this.drawTile("full_tile", x, y, "");
             break;
           case 2:
             this.drawTile("info", x, y, "⚓");
@@ -70,3 +83,4 @@ export class Board {
 
 export let newBoard = new Board();
 newBoard.drawMap();
+newBoard.countColumn();
