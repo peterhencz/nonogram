@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "fece804a1d2828ed04c4";
+/******/ 	var hotCurrentHash = "b948f7d55cf7ae3f647b";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -805,7 +805,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "body {\n  margin: 0;\n  padding: 1em;\n  background-color: #c5c5c5;\n  display: grid;\n  place-items: center;\n  height: 100vh;\n  width: auto;\n  font-size: 16px; }\n\n#board {\n  display: flex;\n  flex-direction: row;\n  flex-flow: wrap;\n  height: auto; }\n\n#blank_tile,\n.blank_tile {\n  border: 1px solid #333;\n  width: 20px;\n  height: 20px; }\n\n#full_tile,\n.full_tile {\n  border: 1px solid #333;\n  width: 20px;\n  height: 20px;\n  background-color: #333; }\n\n.info {\n  display: grid;\n  place-items: center center;\n  font-size: 0.5em;\n  border: 1px solid transparent;\n  width: 20px;\n  height: 20px;\n  background-color: transparent; }\n\n.emo {\n  display: grid;\n  place-items: center center;\n  font-size: 0.5em;\n  border: 1px solid transparent;\n  width: 20px;\n  height: 20px;\n  background-color: transparent; }\n", ""]);
+exports.push([module.i, "body {\n  margin: 0;\n  padding: 1em;\n  background-color: #c5c5c5;\n  display: grid;\n  place-items: center;\n  height: 100vh;\n  width: auto;\n  font-size: 16px; }\n\n#board {\n  display: flex;\n  flex-direction: row;\n  flex-flow: wrap;\n  height: auto; }\n\n#blank_tile,\n.blank_tile {\n  border: 1px solid #333;\n  width: 20px;\n  height: 20px; }\n\n#full_tile,\n.full_tile {\n  border: 1px solid #333;\n  width: 20px;\n  height: 20px;\n  background-color: transparent; }\n\n.info {\n  display: grid;\n  place-items: center center;\n  font-size: 0.5em;\n  border: 1px solid transparent;\n  width: 20px;\n  height: 20px;\n  background-color: transparent; }\n\n.emo {\n  display: grid;\n  place-items: center center;\n  font-size: 0.5em;\n  border: 1px solid transparent;\n  width: 20px;\n  height: 20px;\n  background-color: transparent; }\n", ""]);
 
 
 /***/ }),
@@ -2556,10 +2556,14 @@ var Board = /** @class */ (function () {
         board.appendChild(showButton);
         showButton.addEventListener("click", function () {
             var tile = document.getElementsByClassName("full_tile");
-            console.log(tile);
             for (var i = 0; i < tile.length; i++) {
-                tile[i].style.backgroundColor = "transparent";
-                console.log(tile[i]);
+                if (tile[i].style.backgroundColor !== "transparent") {
+                    tile[i].style.backgroundColor = "transparent";
+                }
+                else {
+                    tile[i].style.backgroundColor = "#333";
+                }
+                console.log(tile[i].style.backgroundColor);
             }
         });
     };

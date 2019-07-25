@@ -19,10 +19,13 @@ export class Board {
     board.appendChild(showButton);
     showButton.addEventListener("click", function() {
       let tile = document.getElementsByClassName("full_tile");
-      console.log(tile);
       for (var i = 0; i < tile.length; i++) {
-        tile[i].style.backgroundColor = "transparent";
-        console.log(tile[i]);
+        if (tile[i].style.backgroundColor !== "transparent") {
+          tile[i].style.backgroundColor = "transparent";
+        } else {
+          tile[i].style.backgroundColor = "#333";
+        }
+        console.log(tile[i].style.backgroundColor);
       }
     });
   }
