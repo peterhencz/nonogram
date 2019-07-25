@@ -13,7 +13,7 @@
 /******/ 	function hotDownloadUpdateChunk(chunkId) {
 /******/ 		var script = document.createElement("script");
 /******/ 		script.charset = "utf-8";
-/******/ 		script.src = __webpack_require__.p + "922b037-" + chunkId + "-wps-hmr.js";
+/******/ 		script.src = __webpack_require__.p + "7aa696e-" + chunkId + "-wps-hmr.js";
 /******/ 		if (null) script.crossOrigin = null;
 /******/ 		document.head.appendChild(script);
 /******/ 	}
@@ -27,7 +27,7 @@
 /******/ 			}
 /******/ 			try {
 /******/ 				var request = new XMLHttpRequest();
-/******/ 				var requestPath = __webpack_require__.p + "922b037-wps-hmr.json";
+/******/ 				var requestPath = __webpack_require__.p + "7aa696e-wps-hmr.json";
 /******/ 				request.open("GET", requestPath, true);
 /******/ 				request.timeout = requestTimeout;
 /******/ 				request.send(null);
@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "2aebc9fe296f6dc6c988";
+/******/ 	var hotCurrentHash = "fece804a1d2828ed04c4";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -805,7 +805,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "body {\n  margin: 0;\n  padding: 1em;\n  background-color: #c5c5c5;\n  display: grid;\n  place-items: center;\n  height: 100vh;\n  width: auto;\n  font-size: 16px; }\n\n#board {\n  display: flex;\n  flex-direction: row;\n  flex-flow: wrap;\n  height: auto; }\n\n.blank_tile {\n  border: 1px solid #333;\n  width: 20px;\n  height: 20px; }\n\n.full_tile {\n  border: 1px solid #333;\n  width: 20px;\n  height: 20px;\n  background-color: #333; }\n\n.info {\n  display: grid;\n  place-items: center center;\n  font-size: 0.5em;\n  border: 1px solid transparent;\n  width: 20px;\n  height: 20px;\n  background-color: transparent; }\n\n.emo {\n  display: grid;\n  place-items: center center;\n  font-size: 0.5em;\n  border: 1px solid transparent;\n  width: 20px;\n  height: 20px;\n  background-color: transparent; }\n", ""]);
+exports.push([module.i, "body {\n  margin: 0;\n  padding: 1em;\n  background-color: #c5c5c5;\n  display: grid;\n  place-items: center;\n  height: 100vh;\n  width: auto;\n  font-size: 16px; }\n\n#board {\n  display: flex;\n  flex-direction: row;\n  flex-flow: wrap;\n  height: auto; }\n\n#blank_tile,\n.blank_tile {\n  border: 1px solid #333;\n  width: 20px;\n  height: 20px; }\n\n#full_tile,\n.full_tile {\n  border: 1px solid #333;\n  width: 20px;\n  height: 20px;\n  background-color: #333; }\n\n.info {\n  display: grid;\n  place-items: center center;\n  font-size: 0.5em;\n  border: 1px solid transparent;\n  width: 20px;\n  height: 20px;\n  background-color: transparent; }\n\n.emo {\n  display: grid;\n  place-items: center center;\n  font-size: 0.5em;\n  border: 1px solid transparent;\n  width: 20px;\n  height: 20px;\n  background-color: transparent; }\n", ""]);
 
 
 /***/ }),
@@ -1448,7 +1448,7 @@ module.exports = function (css) {
   let hash = '<unknown>';
   let options;
   try {
-    options = {"compress":null,"headers":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":false,"port":55555,"progress":true,"secure":false,"static":["/Users/peterhencz/Desktop/code/projects/nonogram"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"922b037"};
+    options = {"compress":null,"headers":null,"historyFallback":false,"hmr":true,"host":null,"liveReload":false,"log":{"level":"info","prefix":{"template":"{{level}}"},"name":"webpack-plugin-serve"},"open":false,"port":55555,"progress":true,"secure":false,"static":["/Users/peterhencz/Desktop/code/projects/nonogram"],"status":true,"address":"[::]:55555","compilerName":null,"wpsId":"7aa696e"};
   } catch (e) {
     const { log } = __webpack_require__(/*! ./lib/client/log */ "./node_modules/webpack-plugin-serve/lib/client/log.js");
     log.error(
@@ -2549,6 +2549,20 @@ var Board = /** @class */ (function () {
         this.Map = sizes_1.mapSize;
         this.gameMap = maps_1.level1;
     }
+    Board.prototype.showButton = function () {
+        var showButton = document.createElement("button");
+        showButton.innerHTML = "show";
+        var board = document.getElementById("board");
+        board.appendChild(showButton);
+        showButton.addEventListener("click", function () {
+            var tile = document.getElementsByClassName("full_tile");
+            console.log(tile);
+            for (var i = 0; i < tile.length; i++) {
+                tile[i].style.backgroundColor = "transparent";
+                console.log(tile[i]);
+            }
+        });
+    };
     Board.prototype.drawTile = function (tileClass, x, y, inner) {
         var tile = document.createElement("div");
         tile.classList.add(tileClass);
@@ -2589,7 +2603,6 @@ var Board = /** @class */ (function () {
         }
     };
     Board.prototype.drawMap = function () {
-        console.log("clg: ", this.tile, this.Map, this.gameMap);
         this.drawBoardSize();
         for (var x = 0; x < this.Map; x++) {
             for (var y = 0; y < this.Map; y++) {
@@ -2617,6 +2630,7 @@ var Board = /** @class */ (function () {
 exports.Board = Board;
 exports.newBoard = new Board();
 exports.newBoard.drawMap();
+exports.newBoard.showButton();
 exports.newBoard.countColumn();
 
 

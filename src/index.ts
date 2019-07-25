@@ -4,12 +4,28 @@ console.log("kiscica");
 
 import { tile, mapSize } from "./sizes";
 import { level1 } from "./maps";
+import { showMap } from "./control";
 import "./styles/cica.scss";
 
 export class Board {
   tile = tile;
   Map = mapSize;
   gameMap = level1;
+
+  showButton() {
+    let showButton = document.createElement("button");
+    showButton.innerHTML = "show";
+    let board = document.getElementById("board");
+    board.appendChild(showButton);
+    showButton.addEventListener("click", function() {
+      let tile = document.getElementsByClassName("full_tile");
+      console.log(tile);
+      for (var i = 0; i < tile.length; i++) {
+        tile[i].style.backgroundColor = "transparent";
+        console.log(tile[i]);
+      }
+    });
+  }
 
   drawTile(tileClass: string, x: number, y: number, inner?: string) {
     let tile = document.createElement("div");
@@ -53,7 +69,6 @@ export class Board {
   }
 
   drawMap() {
-    console.log("clg: ", this.tile, this.Map, this.gameMap);
     this.drawBoardSize();
     for (let x = 0; x < this.Map; x++) {
       for (let y = 0; y < this.Map; y++) {
@@ -80,4 +95,5 @@ export class Board {
 
 export let newBoard = new Board();
 newBoard.drawMap();
+newBoard.showButton();
 newBoard.countColumn();

@@ -16,12 +16,14 @@ body {
   height: auto;
 }
 
+#blank_tile,
 .blank_tile {
   border: 1px solid #333;
   width: 20px;
   height: 20px;
 }
 
+#full_tile,
 .full_tile {
   border: 1px solid #333;
   width: 20px;
